@@ -11,4 +11,9 @@ class Point
   def to_s
     "[#{x},#{y}]"
   end
+
+  def distPoints(p)
+  	res = Math.sqrt(((p.x-x)*(p.x-x))+((p.y-y)*(p.y-y)))
+  	res
+  end
 end
