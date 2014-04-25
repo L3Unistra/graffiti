@@ -15,19 +15,14 @@ class TraceConverter
   #Puis remet les points à une échelle 100*100
   def resize
     #Selection des NBPOINT à conserver
-    n = NBPOINT.to_f-1;
-    gap = (tab_point.size/n).round
+    gap = tab_point.size/NBPOINT
     j = 0
     tab_return = []
-    for i in 0..tab_point.size
-      if i % gap == 0
+    for i in 0..tab_point.size-1
+      if i % gap == 0 and j != NBPOINT
         tab_return.push(tab_point[i])
         j+=1
       end
-    end
-    #Si on a pas 10 point on en rajoute le dernier point (petite approximation)
-    if j != n
-      tab_return.push(tab_point[tab_point.size-1])
     end
     @tab_point = tab_return
 
