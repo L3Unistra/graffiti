@@ -11,9 +11,7 @@ class DrawBox < Qt::Widget
 	def initialize(parent)
 		super
 
-		@isPressed = false
-		@x = 0
-		@y = 0
+		@result
 
 		@pos1
 		@pos2
@@ -37,6 +35,7 @@ class DrawBox < Qt::Widget
 	def mouseMoveEvent(e)
 		if (e.pos.x > 0 and e.pos.x < @image.width) and (e.pos.y > 0 and e.pos.y < @image.height)
 			@pos2 = e.pos
+			@result << Point.new(@pos2.x, @pos2.y)
 			puts "Pos : x : #{@pos1.x}, y : #{@pos1.y}"
 			l = @parent.getLabel
 			l.setText "Pos : x : #{@pos1.x}, y : #{@pos1.y}"
@@ -46,11 +45,14 @@ class DrawBox < Qt::Widget
 	end
 
 	def mousePressEvent(e)
+		@result = Array.new 
 		@pos1 = e.pos
+		@result << Point.new(@pos1.x, @pos1.y)
 	end
 
 	def mouseReleaseEvent(e)
 		@image.fill Qt::Color.new "#ffffff"
+		# @result.each{|p| puts p}
 		update 
 	end
 

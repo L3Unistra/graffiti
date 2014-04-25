@@ -2,7 +2,7 @@
 
 require 'thread'
 require 'Qt'
-require './gui'
+require './DrawBox'
 
 class QtApp < Qt::Widget
 	def initialize
