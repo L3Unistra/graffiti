@@ -10,6 +10,7 @@ class Maillon
 	def initialize(p)
 		@p = p
 		@arcs = []
+		@lettre = ''
 	end
 
 	def addArc(a)
@@ -45,7 +46,7 @@ class Maillon
 
 	if __FILE__ == $0
 		#Graphe temporaire
-
+		
 		g = Maillon.new(Point.new(-1,-1))
 		m0 = Maillon.new(Point.new(0,100))
 		m1 = Maillon.new(Point.new(100,0))
