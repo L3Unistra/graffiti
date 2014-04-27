@@ -43,6 +43,13 @@ class Maillon
 		end
 	end
 
+	def Equals(m)
+		if @p = m.p
+			true
+		else
+			false
+		end
+	end
 
 	if __FILE__ == $0
 		#Graphe temporaire
@@ -54,7 +61,7 @@ class Maillon
 		m3 = Maillon.new(Point.new(100,100))
 		m4 = Maillon.new(Point.new(0,0))
 		m5 = Maillon.new(Point.new(50,50))
-		
+
 
 		m2.lettre = 'q'
 		m3.lettre = 'u'

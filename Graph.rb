@@ -25,6 +25,12 @@ class Graph
 			current = tete #maillon actuel
 			for j in 0..tmp.size
 				m = maillon.new(tmp[j].x, tmp[j].y) #on créer le maillon associé au point courant
+				current.arcs.each do |a|
+					if a.m_arr.equals(m)
+						m = a.m_arr
+						break
+					end
+				end
 				current.addArc(Arc.new(current, m,0))
 				current = m
 				if j == tmp.size #dernier point de la lettre
