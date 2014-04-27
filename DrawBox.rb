@@ -35,8 +35,6 @@ class DrawBox < Qt::Widget
 			@pos2 = e.pos
 			@result << Point.new(@pos2.x, @pos2.y)
 			#puts "Pos : x : #{@pos1.x}, y : #{@pos1.y}"
-			l = @parent.getResult
-			l.setText "Pos : x : #{@pos1.x}, y : #{@pos1.y}"
 			drawLineTo @pos1, @pos2
 			#drawPoint @pos1
 			@pos1 = @pos2
@@ -54,6 +52,9 @@ class DrawBox < Qt::Widget
 		# @result.each{|p| puts p}
 
 		puts @result.length
+
+		r = @parent.getResult
+		r.insert "a"
 
 		# tc = TraceConverter.new(@result)
     	# tab = tc.resize
