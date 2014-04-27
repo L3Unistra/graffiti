@@ -3,9 +3,9 @@ require "./Alphabet"
 
 class Graph
 
-  def importJSON
-    fileJson = File.open("letters.txt", "r")
-    txtJson = file.read
+  def self.importJSON
+    fileJson = File.open("alphabet.json", "r")
+    txtJson = fileJson.read
     Alphabet.from_json(txtJson)
   end
 
