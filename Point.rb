@@ -24,6 +24,14 @@ class Point
   }
   end
 
+  def equals(p)
+  	if @x == p.x and @y == p.y
+  		true
+  	else
+  		false
+  	end
+  end
+
   def self.from_json string
     puts 'tP'
     data = JSON.load string

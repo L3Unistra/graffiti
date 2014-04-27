@@ -22,13 +22,14 @@ class Graph
 			tmp = tab[i].points#tableau des points d'une lettre
 			current = tete #maillon actuel
 			for j in 0..tmp.size-1
-				m = Maillon.new(Point.new(tmp[j].x, tmp[j].y)) #on créer le maillon associé au point courant
-				#current.arcs.each do |a|
-				#	if a.m_arr.Equals(m)
-				#		m = a.m_arr
-				#		break
-				#	end
-				#end
+				p=Point.new(tmp[j].x, tmp[j].y)
+				m = Maillon.new(p) #on créer le maillon associé au point courant
+				current.arcs.each do |a|
+					if a.m_arr.p.equals(p)
+						m = a.m_arr
+						break
+					end
+				end
 				if j == tmp.size-1 #dernier point de la lettre
 					m.lettre = tab[i].letter #on assigne la lettre au maillon
 					current.addArc(Arc.new(current, m,0))
@@ -46,9 +47,7 @@ class Graph
 	def solve(tab)
 		trace = TraceConverter.new(tab)
 		tab_coup = trace.resize
-		c = @g.solve(tab_coup)
-		puts c
-		c
+		@g.solve(tab_coup)
 	end
 
 	def self.importJSON 
