@@ -32,6 +32,6 @@ class Letter
     b = Point.new(rand(200).to_i,rand(200).to_i)
     pt = Letter.new('a',[a,b])
     js = pt.to_hash.to_json
-    puts js
+    lt =  Letter.from_json(js)
   end
 end
