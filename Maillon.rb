@@ -43,14 +43,6 @@ class Maillon
 		end
 	end
 
-	def Equals(m)
-		if @p = m.p
-			true
-		else
-			false
-		end
-	end
-
 	if __FILE__ == $0
 		#Graphe temporaire
 
