@@ -57,12 +57,12 @@ class DrawBox < Qt::Widget
 		puts @result.length
 
 		r = @parent.getResult
-		r.insert(g.solve @result)
+		r.insert(@g.solve(@result))
 
 		# tc = TraceConverter.new(@result)
     	# tab = tc.resize
 
-		# file = File.open('letters.json', 'a')
+		# file = File.open('alphabet.json', 'a')
 		# str = '{"letter":"a", "points":['
 		# tab.each{|p| str+='{"x":'+p.x.to_s+', "y":'+p.y.to_s+'},'}
 		# str = str[0..-2]
