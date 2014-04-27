@@ -23,13 +23,13 @@ class Graph
 			current = tete #maillon actuel
 			for j in 0..tmp.size-1
 				m = Maillon.new(Point.new(tmp[j].x, tmp[j].y)) #on créer le maillon associé au point courant
-				current.arcs.each do |a|
-					if a.m_arr.Equals(m)
-						m = a.m_arr
-						break
-					end
-				end
-				if j == tmp.size #dernier point de la lettre
+				#current.arcs.each do |a|
+				#	if a.m_arr.Equals(m)
+				#		m = a.m_arr
+				#		break
+				#	end
+				#end
+				if j == tmp.size-1 #dernier point de la lettre
 					m.lettre = tab[i].letter #on assigne la lettre au maillon
 					current.addArc(Arc.new(current, m,0))
 					current = tete #on remet le maillon courant à la tete

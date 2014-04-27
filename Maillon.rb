@@ -29,7 +29,6 @@ class Maillon
 		if isPuits
 			lettre
 		else
-			puts "i"
 			point = trace.shift
 			maillon = Maillon.new(point)
 			min = 500 #distance max (entre 0-0 et 100-100) est de 141,...
