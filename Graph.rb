@@ -2,7 +2,7 @@
 require "./Alphabet"
 
 class Graph
-<<<<<<< HEAD
+
 	def buildGraph
 		#choper les lettres
 
@@ -10,13 +10,10 @@ class Graph
 
 		#renvoi le maillon de tete du graphe construit
 	end
-=======
 
-  def importJSON
-    fileJson = File.open("letters.txt", "r")
-    txtJson = file.read
-    Alphabet.from_json(txtJson)
-  end
-
->>>>>>> bca145f08afec01fa13d28c23198c52747394162
+	def importJSON
+    	fileJson = File.open("letters.txt", "r")
+    	txtJson = file.read
+    	Alphabet.from_json(txtJson)
+  	end
 end
