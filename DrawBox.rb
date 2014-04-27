@@ -56,8 +56,10 @@ class DrawBox < Qt::Widget
 
 		puts @result.length
 
-		r = @parent.getResult
-		r.insert(@g.solve(@result))
+		if @result.length > 9
+			r = @parent.getResult
+			r.insert(@g.solve(@result))
+		end
 
 		# tc = TraceConverter.new(@result)
     	# tab = tc.resize
