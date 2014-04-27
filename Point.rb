@@ -16,4 +16,11 @@ class Point
   	res = Math.sqrt(((p.x-x)*(p.x-x))+((p.y-y)*(p.y-y)))
   	res
   end
+
+  def to_hash
+  {
+    x: x,
+    y: y
+  }
+  end
 end
