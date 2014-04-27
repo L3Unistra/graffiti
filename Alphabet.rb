@@ -2,24 +2,24 @@
 require "./Letter"
 
 class Alphabet
-  attr_accessor :letters
+  attr_accessor :alphabet
   
   def initialize(t)
-    @letters = t;
+    @alphabet = t;
   end
   
   def to_s
-  "Alphabet: #{letters}"
+  "Alphabet: #{alphabet}"
   end
 
   def to_hash
     {
-      letters: letters.map(&:to_hash)
+      alphabet: alphabet.map(&:to_hash)
     }
   end
 
   def self.from_json string
     data = JSON.load string
-    self.new data['letters']
+    self.new data['alphabet']
   end
 end
