@@ -54,8 +54,6 @@ class DrawBox < Qt::Widget
 		@image.fill Qt::Color.new "#ffffff"
 		# @result.each{|p| puts p}
 
-		puts @result.length
-
 		if @result.length > 9
 			r = @parent.getResult
 			r.insert(@g.solve(@result))
