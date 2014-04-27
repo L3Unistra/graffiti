@@ -54,13 +54,14 @@ class DrawBox < Qt::Widget
 		@image.fill Qt::Color.new "#ffffff"
 		# @result.each{|p| puts p}
 
-		if @result.length > 9
+		if @result.length > 19
 			r = @parent.getResult
 			r.insert(@g.solve(@result))
 		end
 
+		# puts @result.length
 		# tc = TraceConverter.new(@result)
-    	# tab = tc.resize
+  #   	tab = tc.resize
 
 		# file = File.open('alphabet.json', 'a')
 		# str = '{"letter":"a", "points":['

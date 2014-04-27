@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require './Point'
 
-NBPOINT = 10
+NBPOINT = 20
 
 class TraceConverter
   attr_accessor :tab_point
