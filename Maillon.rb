@@ -46,7 +46,7 @@ class Maillon
 
 	if __FILE__ == $0
 		#Graphe temporaire
-		
+
 		g = Maillon.new(Point.new(-1,-1))
 		m0 = Maillon.new(Point.new(0,100))
 		m1 = Maillon.new(Point.new(100,0))
@@ -54,7 +54,7 @@ class Maillon
 		m3 = Maillon.new(Point.new(100,100))
 		m4 = Maillon.new(Point.new(0,0))
 		m5 = Maillon.new(Point.new(50,50))
-
+		
 
 		m2.lettre = 'q'
 		m3.lettre = 'u'
