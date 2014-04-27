@@ -19,14 +19,14 @@ class Graph
 		#Construire le graphe depuis les lettres
 
 		tete = Maillon.new(Point.new(-1,-1))
-		for i in 0..tab.size #On parcours chaque lettre de l'alphabet
+		for i in 0..tab.size-1 #On parcours chaque lettre de l'alphabet
 
 			tmp = tab[i].points#tableau des points d'une lettre
 			current = tete #maillon actuel
-			for j in 0..tmp.size
-				m = maillon.new(tmp[j].x, tmp[j].y) #on créer le maillon associé au point courant
+			for j in 0..tmp.size-1
+				m = Maillon.new(Point.new(tmp[j].x, tmp[j].y)) #on créer le maillon associé au point courant
 				current.arcs.each do |a|
-					if a.m_arr.equals(m)
+					if a.m_arr.Equals(m)
 						m = a.m_arr
 						break
 					end
