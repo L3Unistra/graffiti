@@ -2,12 +2,15 @@
 
 require 'thread'
 require 'Qt'
-require './Point.rb'
-require './TraceConverter.rb'
+require './Graph'
+require './Point'
+#require './TraceConverter'
 
 class DrawBox < Qt::Widget
 	def initialize(parent)
 		super
+
+		@g = Graph.new
 
 		@result
 
@@ -54,7 +57,7 @@ class DrawBox < Qt::Widget
 		puts @result.length
 
 		r = @parent.getResult
-		r.insert "a"
+		r.insert(g.solve @result)
 
 		# tc = TraceConverter.new(@result)
     	# tab = tc.resize
