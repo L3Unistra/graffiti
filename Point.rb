@@ -25,7 +25,7 @@ class Point
   end
 
   def equals(p)
-  	if @x == p.x and @y == p.y
+  	if @x >= p.x-10 and @x <= p.x+10 and @y >= p.y-10 and @y <= p.y+10
   		true
   	else
   		false
