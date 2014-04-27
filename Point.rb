@@ -23,4 +23,10 @@ class Point
     y: y
   }
   end
+
+  def self.from_json string
+    puts 'tP'
+    data = JSON.load string
+    self.new data['x'], data['y']
+  end
 end

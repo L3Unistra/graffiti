@@ -24,7 +24,12 @@ class Letter
 
   def self.from_json string
     data = JSON.load string
-    self.new data['letter'], data['points']
+
+    tab = []
+    data['points'].each do | pt |
+      tab.push(Point.new(pt['x'], pt['y']))
+    end
+    self.new data['letter'], pt
   end
 
   if __FILE__ == $0
