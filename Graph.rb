@@ -2,6 +2,7 @@
 require "./Point"
 require './Alphabet.rb'
 require './Maillon.rb'
+require './TraceConverter'
 
 class Graph
 
@@ -12,15 +13,12 @@ class Graph
 	end
 
 	def self.buildGraph
-		#choper les lettres
 		al = Graph.importJSON
 		tab = al.alphabet
-		#puts tab
 		#Construire le graphe depuis les lettres
 
 		tete = Maillon.new(Point.new(-1,-1))
 		for i in 0..tab.size-1 #On parcours chaque lettre de l'alphabet
-
 			tmp = tab[i].points#tableau des points d'une lettre
 			current = tete #maillon actuel
 			for j in 0..tmp.size-1
@@ -31,11 +29,13 @@ class Graph
 						break
 					end
 				end
-				current.addArc(Arc.new(current, m,0))
-				current = m
 				if j == tmp.size #dernier point de la lettre
-					m.lettre = tab[i].lettre #on assigne la lettre au maillon
+					m.lettre = tab[i].letter #on assigne la lettre au maillon
+					current.addArc(Arc.new(current, m,0))
 					current = tete #on remet le maillon courant à la tete
+				else
+					current.addArc(Arc.new(current, m,0))
+					current = m
 				end
 			end
 		end
