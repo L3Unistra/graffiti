@@ -8,7 +8,7 @@ require './Point'
 
 class DrawBox < Qt::Widget
 	def initialize(parent, mode)
-		super
+		super parent
 
 		@g = Graph.new("alphabet.json")
 
@@ -19,7 +19,7 @@ class DrawBox < Qt::Widget
 
 		@parent = parent
 
-		@image = Qt::Image.new @parent.width, @parent.height/2, 7
+		@image = Qt::Image.new 300, 300, 7
 		@image.fill Qt::Color.new "#ffffff"
 	end
 
