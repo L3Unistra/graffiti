@@ -13,8 +13,7 @@ class Point
   end
 
   def distPoints(p)
-  	res = Math.sqrt(((p.x-x)*(p.x-x))+((p.y-y)*(p.y-y)))
-  	res
+  	Math.sqrt(((p.x-x)*(p.x-x))+((p.y-y)*(p.y-y)))
   end
 
   def to_hash
@@ -26,7 +25,6 @@ class Point
 
   def equals(p)
     if self.distPoints(p) < 7
-      puts "sommet ignore"
   		true
   	else
   		false
