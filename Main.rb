@@ -35,16 +35,15 @@ class QtApp < Qt::Widget
 	def init_ui
 		grid = Qt::GridLayout.new self
 
-		windLabel = Qt::Label.new "Draw here :", self
 		@result = Qt::LineEdit.new self
-		gv = DrawBox.new self
+		letters = DrawBox.new self, 1
+		numbers = DrawBox.new self, 2
 		quit = Qt::PushButton.new 'Quit', self
 		
-        grid.addWidget windLabel, 0, 0
-        grid.addWidget gv, 1, 0, 2, 4
-		grid.setColumnStretch 1, 1
+        grid.addWidget letters, 1, 0, 2, 2
+        grid.addWidget numbers, 1, 2, 2, 2
 		grid.addWidget @result, 4, 0, 1, 2
-		grid.addWidget quit, 4, 2
+		grid.addWidget quit, 4, 3, 1, 1
 
 		connect quit, SIGNAL('clicked()'), $qApp, SLOT('quit()')
 	end

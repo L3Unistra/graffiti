@@ -7,9 +7,11 @@ require './Point'
 #require './TraceConverter'
 
 class DrawBox < Qt::Widget
-	def initialize(parent)
+	def initialize(parent, mode)
 		super
 
+		al = Graph.importJSON
+		@pts = al.alphabet
 		@g = Graph.new
 
 		@result
@@ -19,7 +21,7 @@ class DrawBox < Qt::Widget
 
 		@parent = parent
 
-		@image = Qt::Image.new @parent.width, @parent.height/2, 7
+		@image = Qt::Image.new 300, 300, 7
 		@image.fill Qt::Color.new "#ffffff"
 	end
 
@@ -59,9 +61,10 @@ class DrawBox < Qt::Widget
 			r.insert(@g.solve(@result))
 		end
 
+		#drawPoints
 		# puts @result.length
 		# tc = TraceConverter.new(@result)
-  #   	tab = tc.resize
+ 		# tab = tc.resize
 
 		# file = File.open('alphabet.json', 'a')
 		# str = '{"letter":"a", "points":['
@@ -108,5 +111,11 @@ class DrawBox < Qt::Widget
         rad = (3/2)+2;
         update
         p.end
+	end
+
+	def drawPoints
+		p = @pts.shift
+		puts p
+		p.points.each{|a| drawPoint(a)}
 	end
 end
