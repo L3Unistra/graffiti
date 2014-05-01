@@ -25,7 +25,8 @@ class Point
   end
 
   def equals(p)
-  	if @x >= p.x-10 and @x <= p.x+10 and @y >= p.y-10 and @y <= p.y+10
+    if self.distPoints(p) < 7
+      puts "sommet ignore"
   		true
   	else
   		false
