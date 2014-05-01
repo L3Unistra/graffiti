@@ -8,12 +8,12 @@ class Graph
 
 	attr_accessor :g #tete du graphe de résolution
 
-	def initialize
-		@g = Graph.buildGraph
+	def initialize(filename)
+		@g = Graph.buildGraph(filename)
 	end
 
-	def self.buildGraph
-		al = Graph.importJSON
+	def self.buildGraph(filename)
+		al = Graph.importJSON(filename)
 		tab = al.alphabet
 		#Construire le graphe depuis les lettres
 
@@ -50,13 +50,13 @@ class Graph
 		@g.solve(tab_coup)
 	end
 
-	def self.importJSON 
-		fileJson = File.open("alphabet.json", "r")
+	def self.importJSON(filename)
+		fileJson = File.open(filename, "r")
 		txtJson = fileJson.read
 		Alphabet.from_json(txtJson)
 	end
 
   	if __FILE__ == $0
-  		Graph.buildGraph
+  		Graph.buildGraph("alphabet.json")
   	end
 end
