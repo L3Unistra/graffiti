@@ -14,20 +14,9 @@ class TraceConverter
   #Change la zone de travail pour avoir la plus petite zone possible contenant la lettre
   #Puis remet les points à une échelle 100*100
   def resize
-    #Selection des NBPOINT à conserver
-    gap = tab_point.size/NBPOINT
-    j = 0
-    tab_return = []
-    for i in 0..tab_point.size-1
-      if i % gap == 0 and j != NBPOINT
-        tab_return.push(tab_point[i])
-        j+=1
-      end
-    end
-    @tab_point = tab_return
+    @tab_point = self.select_n
 
     min_x, min_y, max_x, max_y = max_min
-
     #Changement de la zone de travail
     @tab_point = tab_point.map { | point | Point.new(point.x-min_x, point.y-min_y)}
 
@@ -43,10 +32,62 @@ class TraceConverter
     end
 
     #Echelle 100*100
+    #Test si max_x/max_y trop petit
+    #On ajoute juste 50 au points
     @tab_point = tab_point.map { | point | Point.new(point.x*100/max_x, point.y*100/max_y)}
   end
 
+  #selectionne NBPOINT dans tab_point
+  def select_n
+    tab_return = []
+    tab_dist = []
 
+    dist = 0
+    p = tab_point[0]
+    for point in tab_point
+      dist+=point.distPoints(p)
+      tab_dist.push(dist)
+      p = point
+    end
+
+    q = tab_dist.last/(NBPOINT-1)
+    tab_return.push(tab_point[0])
+    c=q
+    for i in 0..NBPOINT-2
+
+      j = find_elt(tab_dist,c)
+
+      a = tab_point[j]
+      b = tab_point[j+1]
+
+      ac = c-tab_dist[j]
+      ab = a.distPoints(b)
+
+      aby = b.y-a.y
+      acy = aby*(ac/ab)
+
+      abx = b.x-a.x
+      acx = abx*(ac/ab)
+
+      cx = acx + a.x
+      cy = acy + a.y
+      tab_return.push(Point.new(cx.to_i, cy.to_i))
+      c+=q
+    end
+    tab_return
+  end
+
+  def find_elt(tab, elt)
+    res = -1
+    old_e_t = -1
+    for e_t in tab
+      if res == -1 and e_t >= elt
+        res = tab.index(old_e_t)
+      end
+      old_e_t = e_t
+    end
+    res
+  end
 
   #Retourne le min et max de x et y dans tab_point 
   def max_min
@@ -69,12 +110,12 @@ class TraceConverter
   if __FILE__ == $0
     p = []
     for i in 0..ARGV[0].to_i-1
-      p.push(Point.new(rand(200).to_i,rand(200).to_i))
+      p.push(Point.new(rand(500).to_i,rand(500).to_i))
     end
     #p = [Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11)]
     tc = TraceConverter.new(p)
 
     tab = tc.resize
-    
+    puts tc.tab_point
   end
 end
