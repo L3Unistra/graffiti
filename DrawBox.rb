@@ -8,7 +8,7 @@ require './Point'
 
 class DrawBox < Qt::Widget
 	def initialize(parent, mode)
-		super
+		super parent
 
 		al = Graph.importJSON
 		@pts = al.alphabet
