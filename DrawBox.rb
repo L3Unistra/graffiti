@@ -20,7 +20,7 @@ class DrawBox < Qt::Widget
 
 		@parent = parent
 
-		@image = Qt::Image.new 300, 300, 7
+		@image = Qt::Image.new 1000, 1000, 7
 		@image.fill Qt::Color.new "#ffffff"
 	end
 
@@ -109,5 +109,10 @@ class DrawBox < Qt::Widget
         rad = (3/2)+2;
         update
         p.end
+	end
+
+	def resize
+		@image = Qt::Image.new @parent.width/2, @parent.width/2, 7
+		@image.fill Qt::Color.new "#ffffff"
 	end
 end
