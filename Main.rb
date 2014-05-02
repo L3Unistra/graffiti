@@ -11,7 +11,7 @@ class QtApp < Qt::Widget
 	def initialize
 		super
 
-		setWindowTitle "Draw Box"
+		setWindowTitle "Graffiti"
 		resize WIDTH, HEIGHT
 
 		center
