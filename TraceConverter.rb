@@ -20,6 +20,8 @@ class TraceConverter
     #Changement de la zone de travail
     @tab_point = tab_point.map { | point | Point.new(point.x-min_x, point.y-min_y)}
 
+    diff_x = max_x-min_x
+    diff_y = max_y-min_y
     max_x-=min_x
     max_y-=min_y
 
@@ -32,9 +34,14 @@ class TraceConverter
     end
 
     #Echelle 100*100
-    #Test si max_x/max_y trop petit
-    #On ajoute juste 50 au points
-    @tab_point = tab_point.map { | point | Point.new(point.x*100/max_x, point.y*100/max_y)}
+    #Si min_x/max_x trop petit alors on ajoute juste 50 au points (gestion cas I)
+    if diff_x < 10
+      @tab_point = tab_point.map { | point | Point.new(point.x+50, point.y*100/max_y)}
+    elsif diff_y < 10
+      @tab_point = tab_point.map { | point | Point.new(point.x*100/max_x, point.y+50)}
+    else
+      @tab_point = tab_point.map { | point | Point.new(point.x*100/max_x, point.y*100/max_y)}
+    end
   end
 
   #selectionne NBPOINT dans tab_point
