@@ -43,6 +43,16 @@ class Maillon
 		end
 	end
 
+	def pondere(trace, i)
+		if i < trace.size
+			point = trace[i]
+			arcs.each do |a|
+				a.poids = p.distPoints(point)
+				a.m_arr.pondere(trace, i+1)
+			end
+		end
+	end
+
 	if __FILE__ == $0
 		#Graphe temporaire
 

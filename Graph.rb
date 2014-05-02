@@ -47,7 +47,12 @@ class Graph
 	def solve(tab)
 		trace = TraceConverter.new(tab)
 		tab_coup = trace.resize
+		@g.pondere(tab_coup, 0)
 		@g.solve(tab_coup)
+	end
+
+	def pondere(tab)
+		@g.pondere(tab)
 	end
 
 	def self.importJSON(filename)
