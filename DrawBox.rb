@@ -10,7 +10,8 @@ class DrawBox < Qt::Widget
 	def initialize(parent, mode)
 		super parent
 
-		@g = Graph.new("alphabet.json")
+		
+		@g = mode == 1 ? Graph.new("alphabet.json") : Graph.new("numbers.json")
 
 		@result
 
@@ -63,7 +64,7 @@ class DrawBox < Qt::Widget
 		# tc = TraceConverter.new(@result)
   #   	tab = tc.resize
 
-		# file = File.open('alphabet.json', 'a')
+		# file = File.open('new.json', 'a')
 		# str = '{"letter":"a", "points":['
 		# tab.each{|p| str+='{"x":'+p.x.to_s+', "y":'+p.y.to_s+'},'}
 		# str = str[0..-2]
