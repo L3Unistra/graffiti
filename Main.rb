@@ -38,7 +38,6 @@ class QtApp < Qt::Widget
 		labelLetters = Qt::Label.new "Letters", self
 		labelNumbers = Qt::Label.new "Numbers", self
 		@result = Qt::LineEdit.new self
-		@result.isReadOnly
 		@letters = DrawBox.new self, 1
 		@numbers = DrawBox.new self, 2
 		quit = Qt::PushButton.new 'Quit', self
