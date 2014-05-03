@@ -54,7 +54,7 @@ class DrawBox < Qt::Widget
 	def mouseReleaseEvent(e)
 		@image.fill Qt::Color.new "#ffffff"
 
-		if @result.length > 19
+		if @result.length > 1
 			char = @graph.solve(@result)
 			if char == "shift"
 				@shift = true
