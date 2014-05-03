@@ -48,7 +48,17 @@ class Graph
 		trace = TraceConverter.new(tab)
 		tab_coup = trace.resize
 		@g.pondere(tab_coup, 0)
-		@g.solve(tab_coup)
+		@g.findpuits(g)
+
+		min = @g.puits[0].poids_to_rac
+		res = @g.puits[0].lettre
+		@g.puits.each do |p|
+			if min > p.poids_to_rac
+				min = p.poids_to_rac
+				res = p.lettre
+			end
+		end
+		res
 	end
 
 	def pondere(tab)

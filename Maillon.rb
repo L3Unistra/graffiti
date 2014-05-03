@@ -6,15 +6,23 @@ class Maillon
 	attr_accessor :p
 	attr_accessor :arcs
 	attr_accessor :lettre
+	attr_accessor :poids_to_rac
+	attr_accessor :puits
 
 	def initialize(p)
 		@p = p
 		@arcs = []
 		@lettre = '-'
+		@poids_to_rac = 0
+		@puits = []
 	end
 
 	def addArc(a)
 		@arcs << a
+	end
+
+	def addPuits(m)
+		@puits << m
 	end
 
 	def isPuits
@@ -25,6 +33,7 @@ class Maillon
 		end
 	end
 
+	#Non utilisé
 	def solve(trace)
 		if isPuits
 			lettre
@@ -40,6 +49,18 @@ class Maillon
 				end
 			end
 			maillon.solve(trace)
+		end
+	end
+
+	def findpuits(g)
+		arcs.each do |a|
+			m = a.m_arr
+			m.poids_to_rac = @poids_to_rac + a.poids
+			if !m.isPuits
+				m.findpuits(g)
+			else
+				g.addPuits(m)
+			end
 		end
 	end
 
@@ -81,13 +102,11 @@ class Maillon
 
 
 		trace = [Point.new(0,100),Point.new(50,50)]
-		puts g.solve(trace) #==> Q
-		trace = [Point.new(0,100),Point.new(100,100)]
-		puts g.solve(trace) #==> U
-		trace = [Point.new(100,0),Point.new(0,0)]
-		puts g.solve(trace) #==> Q
-		trace = [Point.new(100,0),Point.new(50,50)]
-		puts g.solve(trace) #==> Q
-		
+		g.pondere(trace,0)
+		g.findpuits(g)
+		g.puits.each do |p|
+			print p.lettre
+		end
+
 	end
 end
