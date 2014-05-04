@@ -59,15 +59,14 @@ class TraceConverter
 
     q = tab_dist.last/(NBPOINT-1)
     tab_return.push(tab_point[0])
-    c=q
-    for i in 0..NBPOINT-2
+    for i in 1..NBPOINT-1
 
-      j = find_elt(tab_dist,c)
+      j = find_elt(tab_dist,q*i)
 
       a = tab_point[j]
       b = tab_point[j+1]
 
-      ac = c-tab_dist[j]
+      ac = q*i-tab_dist[j]
       ab = a.distPoints(b)
 
       aby = b.y-a.y
@@ -79,7 +78,6 @@ class TraceConverter
       cx = acx + a.x
       cy = acy + a.y
       tab_return.push(Point.new(cx.to_i, cy.to_i))
-      c+=q
     end
     tab_return
   end
@@ -121,8 +119,8 @@ class TraceConverter
     end
     #p = [Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11),Point.new(1,2), Point.new(3,11)]
     tc = TraceConverter.new(p)
-
+    test = tc.tab_point
     tab = tc.resize
-    puts tc.tab_point
+    puts test == tc.tab_point
   end
 end
