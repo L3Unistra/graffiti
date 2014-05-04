@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "./Letter"
+require "./Char"
 
 class Alphabet
   attr_accessor :alphabet
@@ -26,7 +26,7 @@ class Alphabet
       al['points'].each do | pt |
         tabPT.push(Point.new(pt['x'], pt['y']))
       end
-      tab.push(Letter.new(al['letter'],tabPT))
+      tab.push(Char.new(al['char'],tabPT))
     end
     self.new tab
   end

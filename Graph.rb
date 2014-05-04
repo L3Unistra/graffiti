@@ -15,11 +15,11 @@ class Graph
 	def self.buildGraph(filename)
 		al = Graph.importJSON(filename)
 		tab = al.alphabet
-		#Construire le graphe depuis les lettres
+		#Construire le graphe depuis les chars
 
 		tete = Maillon.new(Point.new(-1,-1))
-		for i in 0..tab.size-1 #On parcours chaque lettre de l'alphabet
-			tmp = tab[i].points#tableau des points d'une lettre
+		for i in 0..tab.size-1 #On parcours chaque char de l'alphabet
+			tmp = tab[i].points#tableau des points d'un char
 			current = tete #maillon actuel
 			for j in 0..tmp.size-1
 				p=Point.new(tmp[j].x, tmp[j].y)
@@ -30,8 +30,8 @@ class Graph
 						break
 					end
 				end
-				if j == tmp.size-1 #dernier point de la lettre
-					m.lettre = tab[i].letter #on assigne la lettre au maillon
+				if j == tmp.size-1 #dernier point de char
+					m.char = tab[i].char #on assigne le char au maillon
 					current.addArc(Arc.new(current, m,0))
 					current = tete #on remet le maillon courant à la tete
 				else
@@ -51,11 +51,11 @@ class Graph
 		@g.findpuits(g)
 
 		min = @g.puits[0].poids_to_rac
-		res = @g.puits[0].lettre
+		res = @g.puits[0].char
 		@g.puits.each do |p|
 			if min > p.poids_to_rac
 				min = p.poids_to_rac
-				res = p.lettre
+				res = p.char
 			end
 		end
 		res

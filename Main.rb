@@ -38,14 +38,14 @@ class QtApp < Qt::Widget
 		labelLetters = Qt::Label.new "Letters", self
 		labelNumbers = Qt::Label.new "Numbers", self
 		@result = Qt::LineEdit.new self
-		@letters = DrawBox.new self, 1
+		@chars = DrawBox.new self, 1
 		@numbers = DrawBox.new self, 2
 		quit = Qt::PushButton.new 'Quit', self
 
 		grid.addWidget labelLetters, 0, 0
 		grid.addWidget labelNumbers, 0, 2
 		grid.setRowStretch 1, 1
-        grid.addWidget @letters, 1, 0, 2, 2
+        grid.addWidget @chars, 1, 0, 2, 2
         grid.addWidget @numbers, 1, 2, 2, 2
 		grid.addWidget @result, 4, 0, 1, 2
 		grid.addWidget quit, 4, 3, 1, 1
@@ -58,7 +58,7 @@ class QtApp < Qt::Widget
 	end
 
 	def resizeEvent(e)
-		@letters.resize
+		@chars.resize
 		@numbers.resize
 	end
 end

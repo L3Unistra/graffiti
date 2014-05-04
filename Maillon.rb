@@ -5,14 +5,14 @@ require './Arc.rb'
 class Maillon
 	attr_accessor :p
 	attr_accessor :arcs
-	attr_accessor :lettre
+	attr_accessor :char
 	attr_accessor :poids_to_rac
 	attr_accessor :puits
 
 	def initialize(p)
 		@p = p
 		@arcs = []
-		@lettre = '-'
+		@char = '-'
 		@poids_to_rac = 0
 		@puits = []
 	end
@@ -36,7 +36,7 @@ class Maillon
 	#Non utilisé
 	def solve(trace)
 		if isPuits
-			lettre
+			char
 		else
 			point = trace.shift
 			maillon = Maillon.new(point)
@@ -86,10 +86,10 @@ class Maillon
 		m5 = Maillon.new(Point.new(50,50))
 
 
-		m2.lettre = 'q'
-		m3.lettre = 'u'
-		m4.lettre = 'a'
-		m5.lettre = 'c'
+		m2.char = 'q'
+		m3.char = 'u'
+		m4.char = 'a'
+		m5.char = 'c'
 
 		g.addArc(Arc.new(g,m0,0))
 		g.addArc(Arc.new(g,m1,0))
@@ -105,7 +105,7 @@ class Maillon
 		g.pondere(trace,0)
 		g.findpuits(g)
 		g.puits.each do |p|
-			print p.lettre
+			print p.char
 		end
 
 	end

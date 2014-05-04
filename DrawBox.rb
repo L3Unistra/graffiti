@@ -77,7 +77,7 @@ class DrawBox < Qt::Widget
 		# tab = tc.resize
 
 		# file = File.open('new.json', 'a')
-		# str = '{"letter":"a", "points":['
+		# str = '{"char":"a", "points":['
 		# tab.each{|p| str+='{"x":'+p.x.to_s+', "y":'+p.y.to_s+'},'}
 		# str = str[0..-2]
 		# str+= ']},'

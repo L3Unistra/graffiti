@@ -2,22 +2,22 @@
 require "./Point"
 require "json"
 
-class Letter
-  attr_accessor :letter
+class Char
+  attr_accessor :char
   attr_accessor :points
 
   def initialize(lt, pt)
-  @letter = lt
+  @char = lt
   @points = pt
   end
 
   def to_s
-  "#{letter}: #{points}"
+  "#{char}: #{points}"
   end
 
   def to_hash
     {
-      letter: letter,
+      char: char,
       points: points.map(&:to_hash)
     }
   end
@@ -29,7 +29,7 @@ class Letter
     data['points'].each do | pt |
       tab.push(Point.new(pt['x'], pt['y']))
     end
-    self.new data['letter'], pt
+    self.new data['char'], pt
   end
 
   if __FILE__ == $0

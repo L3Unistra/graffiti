@@ -11,7 +11,7 @@ class TraceConverter
   end
 
   #Modifie l'attribut tab_point
-  #Change la zone de travail pour avoir la plus petite zone possible contenant la lettre
+  #Change la zone de travail pour avoir la plus petite zone possible contenant le char
   #Puis remet les points à une échelle 100*100
   def resize
     @tab_point = self.select_n
